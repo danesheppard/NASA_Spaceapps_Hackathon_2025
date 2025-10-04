@@ -1,22 +1,23 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 import { NavLink } from "react-router";
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
-      <>
+    <>
       <div className="hidden md:flex space-x-8">
-      <nav>
-      <NavLink to="/" end>
-        Home
-      </NavLink>
-      <NavLink to="/healthcareaccess">Healthcare Access</NavLink>
-      <NavLink to ="/airquality">Air Quality</NavLink>
-    </nav>
-    </div>
+        <nav>
+          <NavLink to="/" end>
+            Home
+          </NavLink>
+          <NavLink to="/healthcareaccess">Healthcare Access</NavLink>
+          <NavLink to="/airquality">Air Quality</NavLink>
+        </nav>
+      </div>
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -38,7 +39,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
