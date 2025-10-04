@@ -2,6 +2,7 @@
 sourceData/
 *.csv
 *.geojson
+*.tif
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
