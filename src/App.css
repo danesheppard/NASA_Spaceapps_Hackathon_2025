@@ -1,0 +1,68 @@
+a{
+  font-weight: 500;
+  padding: 2rem;
+  color: orange;
+  text-decoration: inherit;
+}
+
+.NavLink{
+  font-weight: 750px;
+  font-size: 800;
+  line-height: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
+  color: orange;
+  text-decoration-thickness: 75px;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500px;
+  font-size: 20px;
+  margin: 16 auto;
+  padding: 10rem;
+  text-align: center;
+  line-height: 50px;
+  font-weight: 800;
+  text-decoration-thickness: 75px;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
