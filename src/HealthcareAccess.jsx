@@ -1,4 +1,6 @@
+// Export a blank react component
 import React from "react";
+<<<<<<< Updated upstream
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -75,36 +77,14 @@ const layers = [
     pickable: true,
   }),
 ];
+=======
+>>>>>>> Stashed changes
 
 function HealthcareAccess() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <nav>
-        <NavLink to="/healthcareaccess" end>
-          Healthcare Access
-        </NavLink>
-      </nav>
-      <div>
-        return (
-        <DeckGL
-          initialViewState={INITIAL_VIEW_STATE}
-          controller
-          layers={layers}
-        >
-          <layers
-            data="/path/to/data.json"
-            getSourcePosition={(d) => d.from}
-            getTargetPosition={(d) => d.to}
-          />
-
-          <ZoomWidget />
-        </DeckGL>
-        );
-      </div>
-      <h1>Test</h1>
-    </>
+    <div>
+      <h1>Healthcare Access</h1>
+    </div>
   );
 }
 
