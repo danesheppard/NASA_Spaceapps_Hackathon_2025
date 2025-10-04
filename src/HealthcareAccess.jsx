@@ -4,8 +4,34 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { NavLink } from "react-router";
 import {DeckGL} from '@deck.gl/react';
-import {MapViewState} from '@deck.gl/core';
-import {LineLayer} from '@deck.gl/layers';
+import {TileLayer} from '@deck.gl/geo-layers';
+import {BitmapLayer} from '@deck.gl/layers';
+import {ZoomWidget} from '@deck.gl/react';
+
+        const INITIAL_VIEW_STATE = {
+        longitude: -122.41669,
+        latitude: 37.7853,
+        zoom: 13
+        };
+
+        const layers = [
+            new TileLayer({
+            id: "basemap",
+            data: ["https://basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"],
+            minZoom: 0,
+            maxZoom: 19,
+            tileSize: 256,
+            renderSubLayers: (props) => {
+                const [[west, south], [east, north]] = props.tile.boundingBox;
+                return new BitmapLayer({
+                id: `${props.id}-bitmap`,
+                image: props.data,
+                bounds: [west, south, east, north],
+                });
+            },
+            }),
+        ];
+
 
 function HealthcareAccess() {
   const [count, setCount] = useState(0)
@@ -17,33 +43,26 @@ function HealthcareAccess() {
         Healthcare Access
       </NavLink>
     </nav>
-      <div>
-        const INITIAL_VIEW_STATE: MapViewState = {
-        longitude: -122.41669,
-        latitude: 37.7853,
-        zoom: 13
-        };
+    <div>
 
-        type DataType = {
-        from: [longitude: number, latitude: number];
-        to: [longitude: number, latitude: number];
-        };
-
-        function App() {
-        const layers = [
-            new LineLayer<DataType>({
-            id: 'line-layer',
-            data: '/path/to/data.json',
-            getSourcePosition: (d: DataType) => d.from,
-            getTargetPosition: (d: DataType) => d.to,
-            })
-        ];
-
-        return <DeckGL
+        return (
+            <DeckGL
             initialViewState={INITIAL_VIEW_STATE}
             controller
-            layers={layers} />;
-        }
+            layers={layers}
+            >
+            <layers
+                data="/path/to/data.json"
+                getSourcePosition={d => d.from}
+                getTargetPosition={d => d.to} />
+            
+
+
+
+            <ZoomWidget/>
+            </DeckGL>
+        );
+        
       </div>
       <h1>Test</h1>
     </>
