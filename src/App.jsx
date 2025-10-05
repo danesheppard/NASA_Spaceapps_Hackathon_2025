@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import viteLogo2 from "./assets/chatGPT-sad.svg";
 import viteLogo from "./assets/ChatGPT-happy.svg";
+import video2 from "./assets/video2.mp4";
 import "./App.css";
 import { NavLink } from "react-router";
 function App() {

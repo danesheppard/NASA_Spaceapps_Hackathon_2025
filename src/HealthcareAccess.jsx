@@ -63,10 +63,9 @@ const layers = [
     data: HOSPITAL_URL,
     filled: true,
     pointRadiusMinPixels: 5,
+    getFillColor: [255, 0, 0],
     getPointRadius: 100,
     getLineWidth: 2,
-    getFillColor: [0, 0, 255],
-    getLineColor: [0, 0, 255],
   }),
 ];
 
