@@ -1,3 +1,4 @@
+// Export a blank react component
 import React from "react";
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
@@ -70,8 +71,6 @@ const layers = [
 ];
 
 function HealthcareAccess() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div>

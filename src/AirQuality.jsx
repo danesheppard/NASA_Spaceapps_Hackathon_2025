@@ -31,7 +31,6 @@ const COLOR_SCALE = scaleThreshold()
 const POLLUTION_DATA_URL =
   "../pollutionExposure/processedData/ec_2019_georgia.geojson";
 
-const HOSPITAL_URL = "../pollutionExposure/processedData/hospitals.geojson";
 // const rasterData = new rasterSource({
 //   accessToken: "local",
 //   url: "/layerData/GHS_BUILT_S_E2025_GLOBE_R2023A_54009_100_V1_0_R5_C11.tif",
@@ -71,18 +70,6 @@ const layers = [
       // We want the elevation to scale fairly dramatically to make the differences more visible
       const ecValue = f.properties.ec * 100;
       return Math.max(0, ecValue * ecValue); // Scale factor of 500
-    },
-    extruded: true,
-    pickable: true,
-  }),
-
-    new GeoJsonLayer({
-    id: "Hospital data",
-    data: HOSPITAL_URL,
-    filled: true,
-    getElevation: (f) => {
-      // We want the elevation to scale fairly dramatically to make the differences more visible
-      return 1000; // Scale factor of 500
     },
     extruded: true,
     pickable: true,
