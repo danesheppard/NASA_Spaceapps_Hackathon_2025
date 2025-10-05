@@ -28,7 +28,7 @@ const COLOR_SCALE = scaleThreshold()
     [255, 0, 0],
   ]);
 
-const HOSPITAL_URL = "../pollutionExposure/processedData/hospitals.geojson";
+const HOSPITAL_URL = "../pollutionExposure/processedData/hospital.geojson";
 
 // const rasterData = new rasterSource({
 //   accessToken: "local",
@@ -57,16 +57,15 @@ const layers = [
   //   filled: true,
   //   getPolygon: (d) => d.geometry.coordinates,
   // }),
+
   new GeoJsonLayer({
     id: "Hospital data",
     data: HOSPITAL_URL,
     filled: true,
-    getElevation: (f) => {
-      // We want the elevation to scale fairly dramatically to make the differences more visible
-      return 1000;
-    },
-    extruded: true,
-    pickable: true,
+    pointRadiusMinPixels: 5,
+    getFillColor: [255, 0, 0],
+    getPointRadius: 100,
+    getLineWidth: 2,
   }),
 ];
 
@@ -81,13 +80,6 @@ function HealthcareAccess() {
           controller
           layers={layers}
         >
-          <layers
-            data="/path/to/data.json"
-            getSourcePosition={(d) => d.from}
-            getTargetPosition={(d) => d.to}
-          />
-
-          <ZoomWidget />
         </DeckGL>
       </div>
     </>

@@ -21,7 +21,7 @@ function App() {
       </div>
       <div>
         <a href="" target="_blank">
-          <video src={video2} width="300" height="150" controls="controls" autoplay="true" />
+          <video src={video2} width="300" height="150" controls="controls" autoPlay={true} loop ={true}/>
         </a>
            <a href="" target="_blank">
           <img src={viteLogo2} className="logo" alt="Vite logo" />
