@@ -28,8 +28,7 @@ const COLOR_SCALE = scaleThreshold()
     [255, 0, 0],
   ]);
 
-const POLLUTION_DATA_URL =
-  "../pollutionExposure/processedData/NASA_Facilities.csv";
+const HOSPITAL_URL = "../pollutionExposure/processedData/hospitals.geojson";
 
 // const rasterData = new rasterSource({
 //   accessToken: "local",
@@ -59,17 +58,12 @@ const layers = [
   //   getPolygon: (d) => d.geometry.coordinates,
   // }),
   new GeoJsonLayer({
-    id: "Pollution data",
-    data: POLLUTION_DATA_URL,
+    id: "Hospital data",
+    data: HOSPITAL_URL,
     filled: true,
-    getFillColor: (d) => {
-      const ecValue = d.properties.ec_normalized;
-      return COLOR_SCALE(ecValue);
-    },
     getElevation: (f) => {
       // We want the elevation to scale fairly dramatically to make the differences more visible
-      const ecValue = f.properties.ec * 100;
-      return Math.max(0, ecValue * ecValue); // Scale factor of 500
+      return 1000;
     },
     extruded: true,
     pickable: true,
