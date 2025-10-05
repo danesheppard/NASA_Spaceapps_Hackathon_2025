@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import viteLogo2 from "./assets/chatGPT-sad.svg";
 import viteLogo from "./assets/ChatGPT-happy.svg";
+import video2 from "./assets/video2.mp4";
 import "./App.css";
 import { NavLink } from "react-router";
 function App() {
@@ -19,10 +20,10 @@ function App() {
         </nav>
       </div>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
+        <a href="" target="_blank">
+          <video src={video2} width="300" height="150" controls="controls" autoplay="true" />
         </a>
-        <a href="https://vite.dev" target="_blank">
+           <a href="" target="_blank">
           <img src={viteLogo2} className="logo" alt="Vite logo" />
         </a>
       </div>
