@@ -1,6 +1,6 @@
 # Data files
 sourceData/
-*.csv
+processedData/
 *.geojson
 *.tif
 

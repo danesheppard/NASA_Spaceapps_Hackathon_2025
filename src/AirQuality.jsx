@@ -87,13 +87,12 @@ const ABI_COLOR_SCALE = scaleThreshold()
     [0, 0, 0], // black
   ]);
 
-const ABI_DATA_URL = "../pollutionExposure/processedData/air_burden_index.csv";
+const ABI_DATA_URL = "../pollutionExposure/demoData/air_burden_index.csv";
 const POLLUTION_DATA_URL =
-  "../pollutionExposure/processedData/ec_2019_ptc_trimmed.csv";
-const HOSPITAL_DATA_URL =
-  "../pollutionExposure/processedData/hospitals.geojson";
+  "../pollutionExposure/demoData/ec_2019_ptc_trimmed.csv";
+const HOSPITAL_DATA_URL = "../pollutionExposure/demoData/hospitals.geojson";
 const POPULATION_DATA_URL =
-  "../pollutionExposure/processedData/populationData_PeachtreeCorners.csv";
+  "../pollutionExposure/demoData/populationData_PeachtreeCorners.csv";
 
 function AirQuality() {
   const [pollutionData, setPollutionData] = useState([]);
@@ -159,33 +158,33 @@ function AirQuality() {
     //   extruded: true,
     //   pickable: true,
     // }),
-    new HexagonLayer({
-      id: "Pollution hexagons",
-      gpuAggregation: true,
-      colorRange: COLOR_SCALE.range(),
-      data: pollutionData,
-      getPosition: (d) => [d.longitude, d.latitude],
-      getColorWeight: (d) => d.ec,
-      getElevationWeight: (d) => {
-        // Use exponential scaling to accentuate differences
-        return d.ec * d.ec * d.ec;
-      },
-      extruded: true,
-      coverage: 1,
-      elevationRange: [0, 2000],
-      elevationScale: pollutionData && pollutionData.length ? 5 : 0,
-      radius: 100,
-      upperPercentile: 100,
-      material: {
-        ambient: 0.64,
-        diffuse: 0.6,
-        shininess: 32,
-        specularColor: [51, 51, 51],
-      },
-      transitions: {
-        elevationScale: 3000,
-      },
-    }),
+    // new HexagonLayer({
+    //   id: "Pollution hexagons",
+    //   gpuAggregation: true,
+    //   colorRange: COLOR_SCALE.range(),
+    //   data: pollutionData,
+    //   getPosition: (d) => [d.longitude, d.latitude],
+    //   getColorWeight: (d) => d.ec,
+    //   getElevationWeight: (d) => {
+    //     // Use exponential scaling to accentuate differences
+    //     return d.ec * d.ec * d.ec;
+    //   },
+    //   extruded: true,
+    //   coverage: 1,
+    //   elevationRange: [0, 2000],
+    //   elevationScale: pollutionData && pollutionData.length ? 5 : 0,
+    //   radius: 100,
+    //   upperPercentile: 100,
+    //   material: {
+    //     ambient: 0.64,
+    //     diffuse: 0.6,
+    //     shininess: 32,
+    //     specularColor: [51, 51, 51],
+    //   },
+    //   transitions: {
+    //     elevationScale: 3000,
+    //   },
+    // }),
     new HexagonLayer({
       id: "Air Burden Index",
       gpuAggregation: true,
