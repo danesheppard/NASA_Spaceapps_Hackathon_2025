@@ -1,11 +1,11 @@
-a{
+a {
   font-weight: 500;
   padding: 0.5rem;
   color: orange;
   text-decoration: inherit;
 }
 
-.NavLink{
+.NavLink {
   font-weight: 750px;
   font-size: 800;
   line-height: 50px;
@@ -65,4 +65,33 @@ a{
 
 .read-the-docs {
   color: #888;
+}
+
+.sidebar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 160px;
+  height: 100vh;
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 16px 8px;
+  z-index: 10;
+}
+
+.sidebar-btn {
+  margin: 8px 0;
+  padding: 12px 16px;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.sidebar-btn:hover {
+  background: #666;
 }
