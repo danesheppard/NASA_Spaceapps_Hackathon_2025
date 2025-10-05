@@ -58,7 +58,6 @@ const layers = [
   //   filled: true,
   //   getPolygon: (d) => d.geometry.coordinates,
   // }),
-
   new GeoJsonLayer({
     id: "Hospital data",
     data: HOSPITAL_URL,
@@ -78,8 +77,7 @@ function HealthcareAccess() {
           initialViewState={INITIAL_VIEW_STATE}
           controller
           layers={layers}
-        >
-        </DeckGL>
+        ></DeckGL>
       </div>
     </>
   );
