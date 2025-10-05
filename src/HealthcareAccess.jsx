@@ -1,3 +1,4 @@
+// Export a blank react component
 import React from "react";
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
@@ -57,7 +58,6 @@ const layers = [
   //   filled: true,
   //   getPolygon: (d) => d.geometry.coordinates,
   // }),
-
   new GeoJsonLayer({
     id: "Hospital data",
     data: HOSPITAL_URL,
@@ -70,8 +70,6 @@ const layers = [
 ];
 
 function HealthcareAccess() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
       <div>
@@ -79,8 +77,7 @@ function HealthcareAccess() {
           initialViewState={INITIAL_VIEW_STATE}
           controller
           layers={layers}
-        >
-        </DeckGL>
+        ></DeckGL>
       </div>
     </>
   );
