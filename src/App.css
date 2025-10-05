@@ -67,17 +67,18 @@ a {
   color: #888;
 }
 
+/* Sidebar styles for AirQuality buttons */
 .sidebar {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 1%;
   width: 160px;
-  height: 100vh;
-  background: #222;
+  height: 50vh;
+  background: none;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 16px 8px;
+  padding-left: 8px;
   z-index: 10;
 }
 
@@ -95,3 +96,40 @@ a {
 .sidebar-btn:hover {
   background: #666;
 }
+
+/* End of sidebar styles */
+
+/* Style for buttons on the right side */
+.calculate-btn {
+  position: absolute;
+  right: 2%;
+  top: 2%;
+  padding: 12px 24px;
+  background: #009c27;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  z-index: 10;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.calculate-btn:hover {
+  background: #0056b3;
+}
+
+.back-btn {
+  position: absolute;
+  right: 2%;
+  top: 92%;
+  padding: 12px 24px;
+  background: #ff5722;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  z-index: 10;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+/* End of button styles */

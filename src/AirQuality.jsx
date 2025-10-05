@@ -90,7 +90,7 @@ const ABI_COLOR_SCALE = scaleThreshold()
 const ABI_DATA_URL = "../pollutionExposure/demoData/air_burden_index.csv";
 const POLLUTION_DATA_URL =
   "../pollutionExposure/demoData/ec_2019_ptc_trimmed.csv";
-const HOSPITAL_DATA_URL = "../pollutionExposure/demoData/hospitals.geojson";
+const HOSPITAL_DATA_URL = "../pollutionExposure/demoData/hospital.geojson";
 const POPULATION_DATA_URL =
   "../pollutionExposure/demoData/populationData_PeachtreeCorners.csv";
 
@@ -99,12 +99,51 @@ function AirQuality() {
   const [hospitalData, setHospitalData] = useState([]);
   const [populationData, setPopulationData] = useState([]);
   const [abiData, setAbiData] = useState([]);
-  const [layerState, setLayerState] = useState([]);
+  const [buttonStates, setbuttonStates] = useState({
+    pollution: false,
+    population: false,
+    hospitals: false,
+    abi: false,
+  });
+
+  const toggleButton = (button) => {
+    const newButtonState = !buttonStates[button];
+    const buttonCallback = (prev) => {
+      if (button == "abi" && newButtonState) {
+        return {
+          ...prev,
+          pollution: false,
+          population: buttonStates.population,
+          hospitals: false,
+          [button]: newButtonState,
+        };
+      } else {
+        return { ...prev, [button]: newButtonState };
+      }
+    };
+    setbuttonStates(buttonCallback);
+    switch (button) {
+      case "pollution":
+        layers.find((layer) => layer.id === "Pollution hexagons").visible =
+          newButtonState;
+        break;
+      case "population":
+        layers.find((layer) => layer.id === "Population hexagons").visible =
+          newButtonState;
+        break;
+      case "hospitals":
+        layers.find((layer) => layer.id === "Hospitals").visible =
+          newButtonState;
+        break;
+      case "abi":
+        layers.find((layer) => layer.id === "Air Burden Index").visible =
+          newButtonState;
+    }
+  };
 
   useEffect(() => {
     const getData = async () => {
       const loadedPollutionData = await load(POLLUTION_DATA_URL, CSVLoader);
-      const loadedHospitalData = await load(HOSPITAL_DATA_URL, CSVLoader);
       const loadedPopulationData = await load(POPULATION_DATA_URL, CSVLoader);
       const loadedABIData = await load(ABI_DATA_URL, CSVLoader);
       // const loadedData = await load(POLLUTION_DATA_URL, CSVLoader);
@@ -113,7 +152,6 @@ function AirQuality() {
       //   d.ec = d.ec;
       // });
       setPollutionData(loadedPollutionData.data);
-      setHospitalData(loadedHospitalData.data);
       setPopulationData(loadedPopulationData.data);
       setAbiData(loadedABIData.data);
     };
@@ -136,55 +174,34 @@ function AirQuality() {
         });
       },
     }),
-    // new PolygonLayer({
-    //   id: "Pollution grid",
-    //   data: POLLUTION_DATA_URL,
-    //   filled: true,
-    //   getPolygon: (d) => d.geometry.coordinates,
-    // }),
-    // new GeoJsonLayer({
-    //   id: "Pollution data",
-    //   data: POLLUTION_DATA_URL,
-    //   filled: true,
-    //   getFillColor: (d) => {
-    //     const ecValue = d.properties.ec_normalized;
-    //     return COLOR_SCALE(ecValue);
-    //   },
-    //   getElevation: (f) => {
-    //     // We want the elevation to scale fairly dramatically to make the differences more visible
-    //     const ecValue = f.properties.ec * 100;
-    //     return Math.max(0, ecValue * ecValue); // Scale factor of 500
-    //   },
-    //   extruded: true,
-    //   pickable: true,
-    // }),
-    // new HexagonLayer({
-    //   id: "Pollution hexagons",
-    //   gpuAggregation: true,
-    //   colorRange: COLOR_SCALE.range(),
-    //   data: pollutionData,
-    //   getPosition: (d) => [d.longitude, d.latitude],
-    //   getColorWeight: (d) => d.ec,
-    //   getElevationWeight: (d) => {
-    //     // Use exponential scaling to accentuate differences
-    //     return d.ec * d.ec * d.ec;
-    //   },
-    //   extruded: true,
-    //   coverage: 1,
-    //   elevationRange: [0, 2000],
-    //   elevationScale: pollutionData && pollutionData.length ? 5 : 0,
-    //   radius: 100,
-    //   upperPercentile: 100,
-    //   material: {
-    //     ambient: 0.64,
-    //     diffuse: 0.6,
-    //     shininess: 32,
-    //     specularColor: [51, 51, 51],
-    //   },
-    //   transitions: {
-    //     elevationScale: 3000,
-    //   },
-    // }),
+    new HexagonLayer({
+      id: "Pollution hexagons",
+      gpuAggregation: true,
+      colorRange: COLOR_SCALE.range(),
+      data: pollutionData,
+      getPosition: (d) => [d.longitude, d.latitude],
+      getColorWeight: (d) => d.ec,
+      getElevationWeight: (d) => {
+        // Use exponential scaling to accentuate differences
+        return d.ec * d.ec * d.ec;
+      },
+      extruded: true,
+      coverage: 1,
+      elevationRange: [0, 2000],
+      elevationScale: buttonStates.pollution ? 5 : 0,
+      visible: buttonStates.pollution,
+      radius: 100,
+      upperPercentile: 100,
+      material: {
+        ambient: 0.64,
+        diffuse: 0.6,
+        shininess: 32,
+        specularColor: [51, 51, 51],
+      },
+      transitions: {
+        elevationScale: 3000,
+      },
+    }),
     new HexagonLayer({
       id: "Air Burden Index",
       gpuAggregation: true,
@@ -199,7 +216,8 @@ function AirQuality() {
       extruded: true,
       coverage: 1,
       elevationRange: [0, 2000],
-      elevationScale: abiData && abiData.length ? 5 : 0,
+      elevationScale: buttonStates.abi ? 5 : 0,
+      visible: buttonStates.abi,
       radius: 100,
       upperPercentile: 100,
       material: {
@@ -212,19 +230,16 @@ function AirQuality() {
         elevationScale: 3000,
       },
     }),
-    // new GeoJsonLayer({
-    //   id: "Hospital Data",
-    //   data: hospitalData,
-    //   filled: true,
-    //   getFillColor: (d) => {
-    //     return [255, 255, 255, 100];
-    //   },
-    //   getElevation: (f) => {
-    //     return 1000;
-    //   },
-    //   extruded: false,
-    //   pickable: true,
-    // }),
+    new GeoJsonLayer({
+      id: "Hospital data",
+      data: HOSPITAL_DATA_URL,
+      filled: true,
+      pointRadiusMinPixels: 5,
+      getFillColor: [255, 0, 0],
+      getPointRadius: 100,
+      visible: buttonStates.hospitals,
+      getLineWidth: 2,
+    }),
     new ScatterplotLayer({
       id: "Population Density",
       data: populationData,
@@ -233,11 +248,38 @@ function AirQuality() {
       getPosition: (d) => [d.longitude, d.latitude, 0],
       getFillColor: (d) => COLOR_SCALE_POPULATION(d.population_normalized),
       getRadius: 0.9,
+      visible: buttonStates.population,
     }),
   ];
 
   return (
     <>
+      <button className="calculate-btn" onClick={() => toggleButton("abi")}>
+        Calculate ABI
+      </button>
+      <div className="sidebar">
+        <button
+          className="sidebar-btn"
+          onClick={() => toggleButton("pollution")}
+        >
+          Show Pollution
+        </button>
+        <button
+          className="sidebar-btn"
+          onClick={() => toggleButton("population")}
+        >
+          Show Population
+        </button>
+        <button
+          className="sidebar-btn"
+          onClick={() => toggleButton("hospitals")}
+        >
+          Show Hospitals
+        </button>
+      </div>
+      <button className="back-btn" onClick={() => (window.location.href = "/")}>
+        Back to Home
+      </button>
       <div>
         <DeckGL
           initialViewState={INITIAL_VIEW_STATE}
