@@ -159,33 +159,33 @@ function AirQuality() {
     //   extruded: true,
     //   pickable: true,
     // }),
-    // new HexagonLayer({
-    //   id: "Pollution hexagons",
-    //   gpuAggregation: true,
-    //   colorRange: COLOR_SCALE.range(),
-    //   data: pollutionData,
-    //   getPosition: (d) => [d.longitude, d.latitude],
-    //   getColorWeight: (d) => d.ec,
-    //   getElevationWeight: (d) => {
-    //     // Use exponential scaling to accentuate differences
-    //     return d.ec * d.ec * d.ec;
-    //   },
-    //   extruded: true,
-    //   coverage: 1,
-    //   elevationRange: [0, 2000],
-    //   elevationScale: pollutionData && pollutionData.length ? 5 : 0,
-    //   radius: 100,
-    //   upperPercentile: 100,
-    //   material: {
-    //     ambient: 0.64,
-    //     diffuse: 0.6,
-    //     shininess: 32,
-    //     specularColor: [51, 51, 51],
-    //   },
-    //   transitions: {
-    //     elevationScale: 3000,
-    //   },
-    // }),
+    new HexagonLayer({
+      id: "Pollution hexagons",
+      gpuAggregation: true,
+      colorRange: COLOR_SCALE.range(),
+      data: pollutionData,
+      getPosition: (d) => [d.longitude, d.latitude],
+      getColorWeight: (d) => d.ec,
+      getElevationWeight: (d) => {
+        // Use exponential scaling to accentuate differences
+        return d.ec * d.ec * d.ec;
+      },
+      extruded: true,
+      coverage: 1,
+      elevationRange: [0, 2000],
+      elevationScale: pollutionData && pollutionData.length ? 5 : 0,
+      radius: 100,
+      upperPercentile: 100,
+      material: {
+        ambient: 0.64,
+        diffuse: 0.6,
+        shininess: 32,
+        specularColor: [51, 51, 51],
+      },
+      transitions: {
+        elevationScale: 3000,
+      },
+    }),
     new HexagonLayer({
       id: "Air Burden Index",
       gpuAggregation: true,
