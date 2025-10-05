@@ -1,7 +1,6 @@
 # Data files
 sourceData/
 processedData/
-*.geojson
 *.tif
 
 # Byte-compiled / optimized / DLL files
