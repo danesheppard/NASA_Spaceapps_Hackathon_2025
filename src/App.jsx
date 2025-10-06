@@ -7,37 +7,32 @@ import "./App.css";
 function App() {
   return (
     <>
-      <div>
-        <a>
-          <video
-            src={happyEarth}
-            style={{ position: "relative", top: "5%", left: "5%" }}
-            width="600"
-            height="300"
-            controls={false}
-            autoPlay={true}
-            loop={true}
-          />
-        </a>
-        <a>
-          <video
-            src={sadEarth}
-            style={{ position: "relative", top: "5%", right: "5%" }}
-            width="600"
-            height="300"
-            controls={false}
-            autoPlay={true}
-            loop={true}
-          />
-        </a>
+      <div className="videoContainer">
+        <video
+          src={happyEarth}
+          style={{ position: "relative", top: "5%", left: "5%" }}
+          width="600"
+          height="300"
+          controls={false}
+          autoPlay={true}
+          loop={true}
+        />
+        <video
+          src={sadEarth}
+          style={{ position: "relative", top: "5%", right: "5%" }}
+          width="600"
+          height="300"
+          controls={false}
+          autoPlay={true}
+          loop={true}
+        />
       </div>
-      <h1>Welcome to CitiSense!</h1>
+      <h1>Welcome to CitiSense</h1>
       <h2>
         Submitted by Team Black Arcs as part of the 2025 NASA Space Apps
         Challenge
       </h2>
       <h3>
-        {" "}
         CitiSense is a hackathon proof-of-concept for a data visualization/data
         fusion tool intended to help urban planners, local governments, and
         interested citizens to leverage all the wonderful data provided for free
@@ -48,11 +43,13 @@ function App() {
         and well-being.
       </h3>
       <div className="goToMap">
-        <nav>
-          <NavLink to="/deckcomponent">
-            Click here to view the proof-of-concept!
-          </NavLink>
-        </nav>
+        <a>
+          <nav>
+            <NavLink to="/deckcomponent">
+              Click here to view the proof-of-concept!
+            </NavLink>
+          </nav>
+        </a>
       </div>
     </>
   );

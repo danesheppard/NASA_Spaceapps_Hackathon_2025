@@ -1,8 +1,44 @@
+.videoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 8vw;
+  width: 100%;
+  margin: 0;
+}
+
+.videoContainer video {
+  flex: 1 1 320px;
+  max-width: 30vw;
+  min-width: 220px;
+  height: auto;
+  display: block;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .videoContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .videoContainer video {
+    max-width: 90vw;
+    min-width: 0;
+  }
+}
+
 a {
   font-weight: 500;
-  padding: 0.5rem;
+  font-size: 800;
+  line-height: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-right: 50px;
+  margin-left: 50px;
   color: orange;
-  text-decoration: inherit;
+  text-decoration-thickness: 75px;
 }
 
 .NavLink {
@@ -23,8 +59,8 @@ a {
   flex-direction: column;
   font-weight: 500px;
   font-size: 20px;
-  margin: 16 auto;
-  padding: 10rem;
+  margin: 0;
+  padding: 0 1rem;
   text-align: center;
   line-height: 50px;
   font-weight: 800;
