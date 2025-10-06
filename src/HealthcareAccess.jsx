@@ -29,7 +29,7 @@ const COLOR_SCALE = scaleThreshold()
     [255, 0, 0],
   ]);
 
-const HOSPITAL_URL = "../pollutionExposure/processedData/hospital.geojson";
+const HOSPITAL_URL = "../pollutionExposure/demoData/hospital.geojson";
 
 // const rasterData = new rasterSource({
 //   accessToken: "local",
