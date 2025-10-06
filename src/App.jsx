@@ -1,42 +1,59 @@
 import React from "react";
-import { useState } from "react";
-import viteLogo2 from "./assets/chatGPT-sad.svg";
-import viteLogo from "./assets/ChatGPT-happy.svg";
-import video2 from "./assets/video2.mp4";
-import video3 from "./assets/video3.mp4";
-import "./App.css";
+import happyEarth from "./assets/happyEarth-watermarked.mp4";
+import sadEarth from "./assets/sadEarth-watermarked.mp4";
 import { NavLink } from "react-router";
-function App() {
-  const [count, setCount] = useState(0);
+import "./App.css";
 
+function App() {
   return (
     <>
-      <div className="hidden md:flex space-x-8">
-        <nav>
-          <NavLink to="/" end>
-            Home
-          </NavLink>
-          <NavLink to="/healthcareaccess">Healthcare Access</NavLink>
-          <NavLink to="/airquality">Air Quality</NavLink>
-        </nav>
-      </div>
       <div>
-        <a href="" target="_blank">
+        <a>
           <video
-            src={video2}
-            width="300"
-            height="150"
-            controls="controls"
+            src={happyEarth}
+            style={{ position: "relative", top: "5%", left: "5%" }}
+            width="600"
+            height="300"
+            controls={false}
             autoPlay={true}
             loop={true}
           />
         </a>
-        <a href="" target="_blank">
-          <video src={video3} width="300" height="150" controls="controls" autoPlay={true} loop ={true}/>
+        <a>
+          <video
+            src={sadEarth}
+            style={{ position: "relative", top: "5%", right: "5%" }}
+            width="600"
+            height="300"
+            controls={false}
+            autoPlay={true}
+            loop={true}
+          />
         </a>
       </div>
-      <h1>NASA Space Apps Challenge</h1>
-      <h2>The Black Arcs</h2>
+      <h1>Welcome to CitiSense!</h1>
+      <h2>
+        Submitted by Team Black Arcs as part of the 2025 NASA Space Apps
+        Challenge
+      </h2>
+      <h3>
+        {" "}
+        CitiSense is a hackathon proof-of-concept for a data visualization/data
+        fusion tool intended to help urban planners, local governments, and
+        interested citizens to leverage all the wonderful data provided for free
+        by NASA to make data-driven decisions about building healthier human
+        settlements. A fully realized CitiSense would allow users to fuse data
+        layers, run on-the-fly analysis, and understand how different
+        environmental factors interact with each other to affect human health
+        and well-being.
+      </h3>
+      <div className="goToMap">
+        <nav>
+          <NavLink to="/deckcomponent">
+            Click here to view the proof-of-concept!
+          </NavLink>
+        </nav>
+      </div>
     </>
   );
 }
