@@ -43,13 +43,11 @@ function App() {
         and well-being.
       </h3>
       <div className="goToMap">
-        <a>
-          <nav>
-            <NavLink to="/deckcomponent">
-              Click here to view the proof-of-concept!
-            </NavLink>
-          </nav>
-        </a>
+        <nav>
+          <NavLink to="/deckcomponent">
+            Click here to view the proof-of-concept!
+          </NavLink>
+        </nav>
       </div>
     </>
   );

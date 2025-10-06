@@ -117,22 +117,31 @@ function DeckComponent() {
       }
     };
     setbuttonStates(buttonCallback);
+    let foundLayer;
     switch (button) {
       case "pollution":
-        layers.find((layer) => layer.id === "Pollution hexagons").visible =
-          newButtonState;
+        foundLayer = layers.find((layer) => layer.id === "Pollution hexagons");
+        if (foundLayer) {
+          foundLayer.visible = newButtonState;
+        }
         break;
       case "population":
-        layers.find((layer) => layer.id === "Population hexagons").visible =
-          newButtonState;
+        foundLayer = layers.find((layer) => layer.id === "Population hexagons");
+        if (foundLayer) {
+          foundLayer.visible = newButtonState;
+        }
         break;
       case "hospitals":
-        layers.find((layer) => layer.id === "Hospitals").visible =
-          newButtonState;
+        foundLayer = layers.find((layer) => layer.id === "Hospitals");
+        if (foundLayer) {
+          foundLayer.visible = newButtonState;
+        }
         break;
       case "abi":
-        layers.find((layer) => layer.id === "Air Burden Index").visible =
-          newButtonState;
+        foundLayer = layers.find((layer) => layer.id === "Air Burden Index");
+        if (foundLayer) {
+          foundLayer.visible = newButtonState;
+        }
     }
   };
 
