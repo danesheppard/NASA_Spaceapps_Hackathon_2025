@@ -84,11 +84,10 @@ const ABI_COLOR_SCALE = scaleThreshold()
     [0, 0, 0], // black
   ]);
 
-const ABI_DATA_URL = "/public/demoData/air_burden_index.csv";
-const POLLUTION_DATA_URL = "/public/demoData/ec_2019_ptc_trimmed.csv";
-const HOSPITAL_DATA_URL = "./public/demoData/hospital.geojson";
-const POPULATION_DATA_URL =
-  "/public/demoData/populationData_PeachtreeCorners.csv";
+const ABI_DATA_URL = "/demoData/air_burden_index.csv";
+const POLLUTION_DATA_URL = "/demoData/ec_2019_ptc_trimmed.csv";
+const HOSPITAL_DATA_URL = "/demoData/hospital.geojson";
+const POPULATION_DATA_URL = "/demoData/populationData_PeachtreeCorners.csv";
 
 function DeckComponent() {
   // State management to handle DeckGL data uploads and button toggles
