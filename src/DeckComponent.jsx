@@ -1,9 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import { NavLink } from "react-router";
 import { DeckGL } from "@deck.gl/react";
 import { TileLayer } from "@deck.gl/geo-layers";
 import {
@@ -12,7 +9,7 @@ import {
   IconLayer,
   ScatterplotLayer,
 } from "@deck.gl/layers";
-import { HexagonLayer, GridLayer } from "@deck.gl/aggregation-layers";
+import { HexagonLayer } from "@deck.gl/aggregation-layers";
 import { CSVLoader } from "@loaders.gl/csv";
 import { load } from "@loaders.gl/core";
 
@@ -87,12 +84,11 @@ const ABI_COLOR_SCALE = scaleThreshold()
     [0, 0, 0], // black
   ]);
 
-const ABI_DATA_URL = "/pollutionExposure/demoData/air_burden_index.csv";
-const POLLUTION_DATA_URL =
-  "/pollutionExposure/demoData/ec_2019_ptc_trimmed.csv";
-const HOSPITAL_DATA_URL = "./pollutionExposure/demoData/hospital.geojson";
+const ABI_DATA_URL = "/public/demoData/air_burden_index.csv";
+const POLLUTION_DATA_URL = "/public/demoData/ec_2019_ptc_trimmed.csv";
+const HOSPITAL_DATA_URL = "./public/demoData/hospital.geojson";
 const POPULATION_DATA_URL =
-  "/pollutionExposure/demoData/populationData_PeachtreeCorners.csv";
+  "/public/demoData/populationData_PeachtreeCorners.csv";
 
 function DeckComponent() {
   // State management to handle DeckGL data uploads and button toggles
